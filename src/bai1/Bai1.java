@@ -35,6 +35,16 @@ public class Bai1 {
         {
             System.out.println("kết nối thành công");
             System.out.println(conn.getCatalog());
+		Statement stmt = conn.createStatement();
+            // get data from table 'student'
+            ResultSet rs = stmt.executeQuery("select * from SanPham");
+            // show data
+            while (rs.next()) {
+                System.out.println(rs.getString("MaSP") + "  " + rs.getString("TenSP")
+                        + "  " + rs.getString("NhaSX") + " " + rs.getString("MaLoaiSP"));
+            }
+            // close connection
+            conn.close();
         }catch(SQLException ex)
         {
         ex.printStackTrace();       
